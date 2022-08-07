@@ -33,12 +33,12 @@ Cluck was written entirely in TypeScript, so it comes with type definitions in t
 
 # Contributing
 
-For issues/bugs, please [file an issue](issues/new).
+For issues/bugs, please [file an issue](../../issues/new).
 
-Pull requests are welcome, but please review the [contribution guidelines](blob/main/CONTRIBUTING.md)
-and [community code of conduct](blob/main/CODE_OF_CONDUCT.md) before submitting a change. Please keep
-in mind that Cluck was written to be quick and lightweight, so changes that introduce a large amount of code
-or dependencies may be declined.
+Pull requests are welcome, but please review the [contribution guidelines](CONTRIBUTING.md)
+and [community code of conduct](CODE_OF_CONDUCT.md) before submitting a change. Please keep
+in mind that Cluck was written to be quick and lightweight, so changes that introduce a large
+amount of code or dependencies may be declined.
 
 # License
 
