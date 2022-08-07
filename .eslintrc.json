@@ -1,0 +1,220 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:sonarjs/recommended",
+        "plugin:unicorn/recommended"
+    ],
+
+    // Use the Typescript parser
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+
+    "root": true,
+
+    // Configure all the various rules
+    "rules":
+    {
+        // Built-in ESLint rules
+        "arrow-parens": "error",
+
+        "brace-style": "off",
+
+        "indent": [
+            "error", 
+            4,
+            {
+                "ArrayExpression": 1,
+                "CallExpression": { "arguments": "first" },
+                "flatTernaryExpressions": true,
+                "FunctionDeclaration": { "parameters": "first" },
+                "FunctionExpression": { "parameters": "first" },
+                "MemberExpression": 1,
+                "ObjectExpression": 1,
+                "SwitchCase": 1,
+                "VariableDeclarator": "first"
+            }
+        ],
+
+        "max-len": [
+            "error",
+            {
+                "code": 200,
+                "ignoreUrls": true,
+                "ignoreComments": true,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true,
+                "tabWidth": 4
+            }
+        ],
+        
+        "no-constant-condition": [
+            "error",
+            {
+                "checkLoops": false
+            }
+        ],
+
+        "no-inner-declarations": "off",
+        "no-promise-executor-return": "error",
+        "no-throw-literal": "error",
+
+        "no-unused-vars": [
+            "error",
+            {
+                "args": "none",
+                "destructuredArrayIgnorePattern": "^unused$"
+            }
+        ],
+
+        "one-var": ["error", "never"],
+        "prefer-const": "off",
+
+        "quotes": [ 
+            "error",
+            "double",
+            {
+                "allowTemplateLiterals": true,
+                "avoidEscape": true
+            }
+        ],
+
+        "radix": ["error", "always"],
+        "semi": ["error", "always"],
+        "yoda": ["error", "never"],
+
+        // SonarJS rules
+        "sonarjs/cognitive-complexity": ["error", 15],
+        "sonarjs/no-collapsible-if": "error",
+        "sonarjs/no-duplicate-string": "off",
+        "sonarjs/no-small-switch": "off",
+
+        // Typescript rules
+        "@typescript-eslint/brace-style": [
+            "error",
+            "allman",
+            {
+                "allowSingleLine": false
+            }
+        ],
+
+        "@typescript-eslint/explicit-member-accessibility": [ "error", { "accessibility": "explicit" } ],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+
+        "@typescript-eslint/member-delimiter-style": [
+            "error",
+            {
+                "multiline": {
+                    "delimiter": "comma",
+                    "requireLast": true
+                },
+                "singleline": {
+                    "delimiter": "comma",
+                    "requireLast": true
+                },
+                "overrides": {
+                    "interface": {
+                        "multiline": {
+                            "delimiter": "semi",
+                            "requireLast": true
+                        },
+                        "singleline": {
+                            "delimiter": "semi",
+                            "requireLast": true
+                        }
+                    }
+                }
+            }
+        ],
+
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "format": [ "camelCase" ],
+                "leadingUnderscore": "forbid",
+                "selector": "default"
+            },
+            {
+                "format": null,
+                "selector": [ "objectLiteralProperty" ]
+            },
+            {
+                "format": [ "PascalCase" ],
+                "leadingUnderscore": "forbid",
+                "selector": [ "class", "enum", "interface", "typeAlias", "typeParameter" ]
+            }
+        ],
+
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-var-requires": "off",
+
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "args": "none",
+                "destructuredArrayIgnorePattern": "^unused$"
+            }
+        ],
+
+        "@typescript-eslint/array-type": [
+            "error",
+            {
+                "default": "generic"
+            }
+        ],
+
+        // Unicorn rules
+        "unicorn/catch-error-name": [
+            "error",
+            {
+                "ignore": [
+                    "^error\\w+$"
+                ]
+            }
+        ],
+
+        "unicorn/empty-brace-spaces": "off",
+
+        "unicorn/filename-case": "off",
+
+        "unicorn/import-style": [
+            "error",
+            {
+                "styles": {
+                    "path": {
+                        "namespace": true
+                    }
+                }
+            }
+        ],
+
+        "unicorn/no-lonely-if": "off",
+        "unicorn/no-new-array": "off",
+        "unicorn/no-null": "off",
+        "unicorn/no-useless-undefined": "off",
+
+        "unicorn/prefer-code-point": "off",
+        "unicorn/prefer-math-trunc": "off",
+        "unicorn/prefer-negative-index": "off",
+        "unicorn/prefer-regexp-test": "off",
+        "unicorn/prefer-spread": "off",
+        "unicorn/prefer-ternary": "off",
+
+        "unicorn/prevent-abbreviations": [
+            "error",
+            {
+                "replacements": {
+                    "i": {
+                        "index": false
+                    },
+                    "args": false,
+                    "fn": false,
+                    "func": false
+                }
+            }
+        ]
+    }
+}
