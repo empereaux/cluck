@@ -1,7 +1,8 @@
 import { assert } from "chai";
 import { describe, it } from "mocha";
-import { expect } from "..";
 import { ExpectA, ExpectBe } from "../types";
+
+import * as cluck from "../index";
 
 describe(
     "Primitives: Undefined",
@@ -16,35 +17,35 @@ describe(
             "false", "null", "true");
 
         it(
-            "Primitive: Undefined",
+            "Correctly validates undefined",
             () =>
             {
                 for (let type of types)
                 {
                     // expect ... to be a ...
-                    assert.throws(() => expect(undefined).to.be.a[type]);
-                    assert.throws(() => expect(undefined).to.be.a(type));
+                    assert.throws(() => cluck.expect(undefined).to.be.a[type], "Expected value to be a");
+                    assert.throws(() => cluck.expect(undefined).to.be.a(type), "Expected value to be a");
 
                     // expect ... to be an ...
-                    assert.throws(() => expect(undefined).to.be.an[type]);
-                    assert.throws(() => expect(undefined).to.be.an(type));
+                    assert.throws(() => cluck.expect(undefined).to.be.an[type], "Expected value to be a");
+                    assert.throws(() => cluck.expect(undefined).to.be.an(type), "Expected value to be a");
                 }
 
                 for (let value of values)
                 {
                     // expect ... to be ...
-                    assert.throws(() => expect(undefined).to.be(value));
+                    assert.throws(() => cluck.expect(undefined).to.be(value), "Expected value to be");
                 }
 
                 for (let valueName of valueNames)
                 {
                     // expect ... to be ...
-                    assert.throws(() => expect(undefined).to.be[valueName]);
+                    assert.throws(() => cluck.expect(undefined).to.be[valueName], "Expected value to be");
                 }
 
-                assert.doesNotThrow(() => expect(undefined).to.be.an("undefined"));
-                assert.doesNotThrow(() => expect(undefined).to.be.undefined);
-                assert.doesNotThrow(() => expect(undefined).to.be(undefined));
-                assert.doesNotThrow(() => expect(undefined).to.equal(undefined));
+                assert.doesNotThrow(() => cluck.expect(undefined).to.be.an("undefined"));
+                assert.doesNotThrow(() => cluck.expect(undefined).to.be.undefined);
+                assert.doesNotThrow(() => cluck.expect(undefined).to.be(undefined));
+                assert.doesNotThrow(() => cluck.expect(undefined).to.equal(undefined));
             });
     });

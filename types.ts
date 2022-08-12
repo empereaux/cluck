@@ -23,7 +23,17 @@ export type ExpectTo =
      * Validates the value strictly equals the given value.
      */
     equal: (value: any) => void,
+
+    /**
+     * Inverts the validation.
+     */
+    not: ExpectNot,
 }
+
+/**
+ * Represents the options for `not`.
+ */
+export type ExpectNot = Omit<ExpectTo, "not">;
 
 /**
  * Represents the options for `be`.

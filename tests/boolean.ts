@@ -1,7 +1,8 @@
 import { assert } from "chai";
 import { describe, it } from "mocha";
-import { expect } from "..";
 import { ExpectA, ExpectBe } from "../types";
+
+import * as cluck from "../index";
 
 describe(
     "Primitives: Boolean",
@@ -16,18 +17,18 @@ describe(
             "false", "null", "true", "undefined");
 
         it(
-            "Primitive: False",
+            "Correctly validates false",
             () =>
             {
                 for (let type of types)
                 {
                     // expect ... to be a ...
-                    assert.throws(() => expect(false).to.be.a[type]);
-                    assert.throws(() => expect(false).to.be.a(type));
+                    assert.throws(() => cluck.expect(false).to.be.a[type], "Expected value to be a");
+                    assert.throws(() => cluck.expect(false).to.be.a(type), "Expected value to be a");
 
                     // expect ... to be an ...
-                    assert.throws(() => expect(false).to.be.an[type]);
-                    assert.throws(() => expect(false).to.be.an(type));
+                    assert.throws(() => cluck.expect(false).to.be.an[type], "Expected value to be a");
+                    assert.throws(() => cluck.expect(false).to.be.an(type), "Expected value to be a");
                 }
 
                 for (let value of values)
@@ -35,7 +36,7 @@ describe(
                     if (value !== false)
                     {
                         // expect ... to be ...
-                        assert.throws(() => expect(false).to.be(value));
+                        assert.throws(() => cluck.expect(false).to.be(value), "Expected value to be");
                     }
                 }
 
@@ -44,29 +45,29 @@ describe(
                     if (valueName !== "false")
                     {
                         // expect ... to be ...
-                        assert.throws(() => expect(false).to.be[valueName]);
+                        assert.throws(() => cluck.expect(false).to.be[valueName], "Expected value to be");
                     }
                 }
 
-                assert.doesNotThrow(() => expect(false).to.be.a("boolean"));
-                assert.doesNotThrow(() => expect(false).to.be.false);
-                assert.doesNotThrow(() => expect(false).to.be(false));
-                assert.doesNotThrow(() => expect(false).to.equal(false));
+                assert.doesNotThrow(() => cluck.expect(false).to.be.a("boolean"));
+                assert.doesNotThrow(() => cluck.expect(false).to.be.false);
+                assert.doesNotThrow(() => cluck.expect(false).to.be(false));
+                assert.doesNotThrow(() => cluck.expect(false).to.equal(false));
             });
 
         it(
-            "Primitive: True",
+            "Correctly validates true",
             () =>
             {
                 for (let type of types)
                 {
                     // expect ... to be a ...
-                    assert.throws(() => expect(true).to.be.a[type]);
-                    assert.throws(() => expect(true).to.be.a(type));
+                    assert.throws(() => cluck.expect(true).to.be.a[type], "Expected value to be a");
+                    assert.throws(() => cluck.expect(true).to.be.a(type), "Expected value to be a");
 
                     // expect ... to be an ...
-                    assert.throws(() => expect(true).to.be.an[type]);
-                    assert.throws(() => expect(true).to.be.an(type));
+                    assert.throws(() => cluck.expect(true).to.be.an[type], "Expected value to be a");
+                    assert.throws(() => cluck.expect(true).to.be.an(type), "Expected value to be a");
                 }
 
                 for (let value of values)
@@ -74,7 +75,7 @@ describe(
                     if (value !== true)
                     {
                         // expect ... to be ...
-                        assert.throws(() => expect(true).to.be(value));
+                        assert.throws(() => cluck.expect(true).to.be(value), "Expected value to be");
                     }
                 }
 
@@ -83,13 +84,13 @@ describe(
                     if (valueName !== "true")
                     {
                         // expect ... to be ...
-                        assert.throws(() => expect(true).to.be[valueName]);
+                        assert.throws(() => cluck.expect(true).to.be[valueName], "Expected value to be");
                     }
                 }
 
-                assert.doesNotThrow(() => expect(true).to.be.a("boolean"));
-                assert.doesNotThrow(() => expect(true).to.be.true);
-                assert.doesNotThrow(() => expect(true).to.be(true));
-                assert.doesNotThrow(() => expect(true).to.equal(true));
+                assert.doesNotThrow(() => cluck.expect(true).to.be.a("boolean"));
+                assert.doesNotThrow(() => cluck.expect(true).to.be.true);
+                assert.doesNotThrow(() => cluck.expect(true).to.be(true));
+                assert.doesNotThrow(() => cluck.expect(true).to.equal(true));
             });
     });

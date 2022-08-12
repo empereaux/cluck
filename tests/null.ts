@@ -1,7 +1,8 @@
 import { assert } from "chai";
 import { describe, it } from "mocha";
-import { expect } from "..";
 import { ExpectA, ExpectBe } from "../types";
+
+import * as cluck from "../index";
 
 describe(
     "Primitives: Null",
@@ -16,7 +17,7 @@ describe(
             "false", "true", "undefined");
 
         it(
-            "Primitive: Null",
+            "Correctly validates null",
             () =>
             {
                 for (let type of types)
@@ -24,29 +25,29 @@ describe(
                     if (type !== "object")
                     {
                         // expect ... to be a ...
-                        assert.throws(() => expect(null).to.be.a[type]);
-                        assert.throws(() => expect(null).to.be.a(type));
+                        assert.throws(() => cluck.expect(null).to.be.a[type], "Expected value to be a");
+                        assert.throws(() => cluck.expect(null).to.be.a(type), "Expected value to be a");
 
                         // expect ... to be an ...
-                        assert.throws(() => expect(null).to.be.an[type]);
-                        assert.throws(() => expect(null).to.be.an(type));
+                        assert.throws(() => cluck.expect(null).to.be.an[type], "Expected value to be a");
+                        assert.throws(() => cluck.expect(null).to.be.an(type), "Expected value to be a");
                     }
                 }
 
                 for (let value of values)
                 {
                     // expect ... to be ...
-                    assert.throws(() => expect(null).to.be(value));
+                    assert.throws(() => cluck.expect(null).to.be(value), "Expected value to be");
                 }
 
                 for (let valueName of valueNames)
                 {
                     // expect ... to be ...
-                    assert.throws(() => expect(null).to.be[valueName]);
+                    assert.throws(() => cluck.expect(null).to.be[valueName], "Expected value to be");
                 }
 
-                assert.doesNotThrow(() => expect(null).to.be.null);
-                assert.doesNotThrow(() => expect(null).to.be(null));
-                assert.doesNotThrow(() => expect(null).to.equal(null));
+                assert.doesNotThrow(() => cluck.expect(null).to.be.null);
+                assert.doesNotThrow(() => cluck.expect(null).to.be(null));
+                assert.doesNotThrow(() => cluck.expect(null).to.equal(null));
             });
     });

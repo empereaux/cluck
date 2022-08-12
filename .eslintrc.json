@@ -6,6 +6,11 @@
         "plugin:unicorn/recommended"
     ],
 
+    "ignorePatterns": [
+        "dist/**/*.js",
+        "webpack.config.js"
+    ],
+
     // Use the Typescript parser
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],

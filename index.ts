@@ -8,8 +8,9 @@ const properties: Record<ExpectStates, Set<string | symbol>> =
     "a" :    new Set([ "array", "boolean", "function", "number", "object", "string", ]),
     "be":    new Set([ "a", "an", "false", "null", "true", "undefined", ]),
     "equal": new Set(),
+    "not":   new Set([ "be", "equal", ]),
     "root":  new Set([ "to" ]),
-    "to":    new Set([ "be", "equal", ]),
+    "to":    new Set([ "be", "equal", "not", ]),
 };
 
 /**
@@ -67,6 +68,11 @@ export function expect(value: any): Expect
                         return undefined;
                     }
 
+                    // Check for inverted checks.
+                    case "not":
+                        invert = true;
+                        break;
+
                     // Check for aliasses, usually just for grammatical purposes.
                     case "an":
                         property = "a";
@@ -90,6 +96,7 @@ type ExpectStates =
     "a"     |
     "be"    |
     "equal" |
+    "not"   |
     "root"  |
     "to"
     ;
@@ -222,7 +229,7 @@ function is(value: any, type: string, invert: boolean): void
     if (!valid)
     {
         // Type does not match.
-        throw new RangeError(`Expected value to be a '${type}', but got '${typeOf(value)}'.`);
+        throw new RangeError(`Expected value to ${invert ? "not " : ""}be a '${type}', but got '${typeOf(value)}'.`);
     }
 }
 
@@ -240,7 +247,7 @@ function literally(value: any, match: any, invert: boolean): void
 
     if (!matches)
     {
-        throw new Error(`Expected value to be '${match}', got '${value}'.`);
+        throw new Error(`Expected value to ${invert ? "not " : ""}be '${match}', got '${value}'.`);
     }
 }
 
