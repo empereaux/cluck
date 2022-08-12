@@ -1,7 +1,15 @@
 {
+    "author": "empereaux",
+    "bugs": "https://github.com/empereaux/cluck/issues",
+    "homepage": "https://github.com/empereaux/cluck",
+    "license": "MIT",
     "main": "./dist/index.js",
     "name": "cluck",
-    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/empereaux/cluck"
+    },
+    "version": "0.1.2",
     "scripts": {
         "build": "webpack",
         "lint": "eslint . --ext .js,.ts",
